@@ -4,6 +4,10 @@ import javafx.beans.property.*;
 
 import java.time.LocalDate;
 
+//프로그램에서 사용되는 실제 데이터 및 데이터 조작 로직을 처리하는 부분
+//Model은 프로그램에서 사용되는 실제 데이터이며 불러오거나 업데이트 하는
+//로직이 추가 되어 있습니다.
+
 //연락처 모델 클래스
 public class Person {
     private final StringProperty firstName;

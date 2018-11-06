@@ -44,15 +44,14 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("AddressApp");
+        this.primaryStage.setTitle("Java 수행평가(사용자 관리)");
 
         initRootLayout();
-
         showPersonOverview();
     }
 
     //상위 레이아웃을 초기화한다.
-    public void initRootLayout() {
+    private void initRootLayout() {
         try {
             // fxml 파일에서 상위 레이아웃을 가져온다.
             FXMLLoader loader = new FXMLLoader();
@@ -68,15 +67,15 @@ public class MainApp extends Application {
         }
     }
 
-    //상위 레이아웃 안에 연락처 요약(person overview)을 보여준다.
-    public void showPersonOverview() {
+    //상위 레이아웃 안에 세부 정보를 보여준다.
+    private void showPersonOverview() {
         try {
-            // 연락처 요약을 가져온다.
+            // 세부 정보를 가져온다.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
             AnchorPane personOverview = loader.load();
 
-            // 연락처 요약을 상위 레이아웃 가운데로 설정한다.
+            // rootLayout안에 setting
             rootLayout.setCenter(personOverview);
 
             //메인 에플리케이션이 컨트롤러를 이용할 수 있게 한다.
@@ -93,8 +92,8 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
-    //person의 자세한 정보를 변경하기 위해 다이얼로그를 연다.
-    //만일 사용자가 OK를 클릭하면 주어진 person에 내용을 저장한 후 true를 반환한다.
+    //세부 정보를 변경하기 위해 다이얼로그를 연다.
+    //만일 사용자가 OK를 클릭하면 주어진 person 객체에 내용을 저장한 후 true를 반환한다.
     public boolean showPersonEditDialog(Person person){
         try{
             //fxml 파일을 로드하고 나서 새로운 스테이지를 만든다.
@@ -104,7 +103,7 @@ public class MainApp extends Application {
 
             //다이얼로그 스테이지를 만든다.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Person");
+            dialogStage.setTitle("정보 변경");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);

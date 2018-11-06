@@ -8,12 +8,12 @@ import java.time.format.DateTimeFormatter;
 public class DateUtil {
 
     //변환에 사용되는 날짜 패턴,원하는 대로 바꿔도 O
-    private static final String DATE_PATTERN = "dd.MM.yyyy";
+    private static final String DATE_PATTERN = "yyyy.MM.dd";
 
     //날짜 변환기
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
 
-    //주어진 날짜를 String타입으로 반환한다.
+    //LocalDate -> String.
     public static String format(LocalDate date){
         if(date==null){
             return null;
@@ -21,8 +21,7 @@ public class DateUtil {
         return DATE_FORMATTER.format(date);
     }
 
-    //String을 DATE_PATTERN에 정의한 대로 LocalDate 객체로 변환한다.
-    //String이 변환되지 않으면 null을 반환한다.
+    //String -> LocalDate
     public static LocalDate parse(String dateString){
         try {
             return DATE_FORMATTER.parse(dateString,LocalDate::from);
