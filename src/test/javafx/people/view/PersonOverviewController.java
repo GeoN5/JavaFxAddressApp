@@ -13,22 +13,22 @@ public class PersonOverviewController {
     @FXML
     private TableView<Person> personTable;
     @FXML
-    private TableColumn<Person,String> firstNameColumn;
+    private TableColumn<Person,String> genderColumn;
     @FXML
-    private TableColumn<Person,String> lastNameColumn;
+    private TableColumn<Person,String> nameColumn;
 
     @FXML
-    private Label firstNameLabel;
+    private Label genderLabel;
     @FXML
-    private Label lastNameLabel;
+    private Label nameLabel;
     @FXML
-    private Label streetLabel;
+    private Label ageLabel;
     @FXML
-    private Label postalCodeLabel;
+    private Label areaLabel;
     @FXML
-    private Label cityLabel;
+    private Label phoneLabel;
     @FXML
-    private Label birthdayLabel;
+    private Label birthLabel;
 
     //메인 에플리케이션 참조
     private MainApp mainApp;
@@ -44,8 +44,8 @@ public class PersonOverviewController {
     private void initialize(){
         //Person 객체의 어떤 필드를 각 열에 사용할지 결정
         //연락처 테이블의 두 열을 초기화한다.
-        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+        genderColumn.setCellValueFactory(cellData -> cellData.getValue().genderProperty());
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 
         //연락처 정보를 지운다.
         showPersonDetails(null);
@@ -63,41 +63,24 @@ public class PersonOverviewController {
     }
 
     //연락처의 자세한 정보를 보여주기 위해 모든 텍스트 필드를 채운다.
-    //만일 person이 null이면 모든 텍스트 필드가 지워진다.
+    //만일 person객체가 null이면 모든 텍스트 필드가 지워진다.
     private void showPersonDetails(Person person){
         if(person!=null){
             //person 객체로 label에 정보를 채운다.
-            firstNameLabel.setText(person.getFirstName());
-            lastNameLabel.setText(person.getLastName());
-            streetLabel.setText(person.getStreet());
-            postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
-            cityLabel.setText(person.getCity());
-            birthdayLabel.setText(DateUtil.format(person.getBirthday()));
+            genderLabel.setText(person.getGender());
+            nameLabel.setText(person.getName());
+            ageLabel.setText(Integer.toString(person.getAge()));
+            areaLabel.setText(person.getArea());
+            phoneLabel.setText(person.getPhone());
+            birthLabel.setText(DateUtil.format(person.getBirth()));
         }else{
             //person이 null이면 모든 텍스트를 지운다.
-            firstNameLabel.setText("");
-            lastNameLabel.setText("");
-            streetLabel.setText("");
-            postalCodeLabel.setText("");
-            cityLabel.setText("");
-            birthdayLabel.setText("");
-        }
-    }
-
-    //사용자가 삭제 버튼을 누르면 호출된다.
-    @FXML
-    private void handleDeletePerson(){
-        int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
-        if(selectedIndex>=0) {
-            personTable.getItems().remove(selectedIndex);
-        }else{
-            //아무것도 선택하지 않았다.
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table");
-            alert.showAndWait();
+            genderLabel.setText("");
+            nameLabel.setText("");
+            ageLabel.setText("");
+            areaLabel.setText("");
+            phoneLabel.setText("");
+            birthLabel.setText("");
         }
     }
 
@@ -133,4 +116,22 @@ public class PersonOverviewController {
             alert.showAndWait();
         }
     }
+
+    //사용자가 삭제 버튼을 누르면 호출된다.
+    @FXML
+    private void handleDeletePerson(){
+        int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+        if(selectedIndex>=0) {
+            personTable.getItems().remove(selectedIndex);
+        }else{
+            //아무것도 선택하지 않았다.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table");
+            alert.showAndWait();
+        }
+    }
+
 }
