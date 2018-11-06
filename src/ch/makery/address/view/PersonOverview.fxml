@@ -48,7 +48,7 @@
                                 <Label text="성별" />
                                 <Label fx:id="genderLabel" text="Label" GridPane.columnIndex="1" />
                                 <Label text="이름" GridPane.rowIndex="1" />
-                                <Label fx:id="NameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label fx:id="nameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <Label text="나이" GridPane.rowIndex="2" />
                                 <Label fx:id="ageLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Label text="지역" GridPane.rowIndex="3" />

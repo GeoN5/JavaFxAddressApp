@@ -22,7 +22,6 @@ public class MainApp extends Application {
     //연락처에 대한 observable 리스트
     private ObservableList<Person> personData = FXCollections.observableArrayList();
 
-    //생성자
     public MainApp(){
         //샘플 데이터를 추가한다.
         personData.add(new Person("Hans","Muster"));

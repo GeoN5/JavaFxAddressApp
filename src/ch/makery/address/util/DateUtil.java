@@ -4,7 +4,6 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-//날짜를 제어하는 헬퍼 함수들
 public class DateUtil {
 
     //변환에 사용되는 날짜 패턴,원하는 대로 바꿔도 O
@@ -32,7 +31,7 @@ public class DateUtil {
 
     //유효한 날짜인지 검사한다.
     public static boolean validDate(String dateString){
-        return DateUtil.parse(dateString)!=null;
+        return parse(dateString)!=null;
     }
 
 }

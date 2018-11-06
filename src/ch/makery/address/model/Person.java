@@ -8,14 +8,14 @@ import java.time.LocalDate;
 //Model은 프로그램에서 사용되는 실제 데이터이며 불러오거나 업데이트 하는
 //로직이 추가 되어 있습니다.
 
-//연락처 모델 클래스
+//세부 정보 모델 클래스
 public class Person {
-    private final StringProperty firstName;
-    private final StringProperty lastName;
-    private final StringProperty street;
-    private final IntegerProperty postalCode;
-    private final StringProperty city;
-    private final ObjectProperty<LocalDate> birthday;
+    private final StringProperty gender;
+    private final StringProperty name;
+    private final IntegerProperty age;
+    private final StringProperty area;
+    private final StringProperty phone;
+    private final ObjectProperty<LocalDate> birth;
 
     //디폴트 생성자
     public Person(){
@@ -23,86 +23,81 @@ public class Person {
     }
 
     //데이터를 초기화하는 생성자
-    public Person(String firstName, String lastName){
-        this.firstName = new SimpleStringProperty(firstName);
-        this.lastName = new SimpleStringProperty(lastName);
+    public Person(String gender, String name){
+        this.gender = new SimpleStringProperty(gender);
+        this.name = new SimpleStringProperty(name);
         //테스트를 위해 초기화하는 더미 데이터
-        this.street = new SimpleStringProperty("some street");
-        this.postalCode = new SimpleIntegerProperty(1234);
-        this.city = new SimpleStringProperty("some city");
-        this.birthday = new SimpleObjectProperty<>(LocalDate.of(1999, 2, 21));
+        this.age = new SimpleIntegerProperty(0);
+        this.area = new SimpleStringProperty("서울");
+        this.phone = new SimpleStringProperty("010-1234-5678");
+        //Date and Time API for JDK 8
+        this.birth = new SimpleObjectProperty<>(LocalDate.of(0, 0, 0));
     }
 
-    public String getFirstName() {
-        return firstName.get();
+    public void setGender(String gender) {
+        this.gender.set(gender);
+    }
+    public String getGender() {
+        return gender.get();
+    }
+    public StringProperty genderProperty() {
+        return gender;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName.set(firstName);
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+    public String getName() {
+        return name.get();
+    }
+    public StringProperty nameProperty() {
+        return name;
     }
 
-    public StringProperty firstNameProperty() {
-        return firstName;
+
+    public void setAge(int age) {
+        this.age.set(age);
+    }
+    public int getAge() {
+        return age.get();
+    }
+    public IntegerProperty ageProperty() {
+        return age;
     }
 
-    public String getLastName() {
-        return lastName.get();
+
+    public void setArea(String area) {
+        this.area.set(area);
+    }
+    public String getArea() {
+        return area.get();
+    }
+    public StringProperty areaProperty() {
+        return area;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName.set(lastName);
+
+    public void setPhone(String phone) {
+        this.phone.set(phone);
+    }
+    public String getPhone() {
+        return phone.get();
+    }
+    public StringProperty phoneProperty() {
+        return phone;
     }
 
-    public StringProperty lastNameProperty() {
-        return lastName;
+
+    public void setBirth(LocalDate birth) {
+        this.birth.set(birth);
+    }
+    public LocalDate getBirth() {
+        return birth.get();
+    }
+    public ObjectProperty<LocalDate> birthProperty() {
+        return birth;
     }
 
-    public String getStreet() {
-        return street.get();
-    }
-
-    public void setStreet(String street) {
-        this.street.set(street);
-    }
-
-    public StringProperty streetProperty() {
-        return street;
-    }
-
-    public int getPostalCode() {
-        return postalCode.get();
-    }
-
-    public void setPostalCode(int postalCode) {
-        this.postalCode.set(postalCode);
-    }
-
-    public IntegerProperty postalCodeProperty() {
-        return postalCode;
-    }
-
-    public String getCity() {
-        return city.get();
-    }
-
-    public void setCity(String city) {
-        this.city.set(city);
-    }
-
-    public StringProperty cityProperty() {
-        return city;
-    }
-
-    public LocalDate getBirthday() {
-        return birthday.get();
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday.set(birthday);
-    }
-
-    public ObjectProperty<LocalDate> birthdayProperty() {
-        return birthday;
-    }
 }
 
