@@ -1,4 +1,4 @@
-package ch.makery.address.util;
+package test.javafx.people.util;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package ch.makery.address.model;
+package test.javafx.people.model;
 
 import javafx.beans.property.*;
 

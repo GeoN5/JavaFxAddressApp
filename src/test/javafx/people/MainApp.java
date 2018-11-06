@@ -1,10 +1,10 @@
-package ch.makery.address;
+package test.javafx.people;
 
 import java.io.IOException;
 
-import ch.makery.address.model.Person;
-import ch.makery.address.view.PersonEditDialogController;
-import ch.makery.address.view.PersonOverviewController;
+import test.javafx.people.model.Person;
+import test.javafx.people.view.PersonEditDialogController;
+import test.javafx.people.view.PersonOverviewController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,15 +24,8 @@ public class MainApp extends Application {
 
     public MainApp(){
         //샘플 데이터를 추가한다.
-        personData.add(new Person("Hans","Muster"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
+        personData.add(new Person("남자","철수"));
+        personData.add(new Person("여자", "영희"));
     }
 
     //연락처에 대한 observable 리스트 반환한다.

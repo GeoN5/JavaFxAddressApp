@@ -1,8 +1,8 @@
-package ch.makery.address.view;
+package test.javafx.people.view;
 
-import ch.makery.address.MainApp;
-import ch.makery.address.model.Person;
-import ch.makery.address.util.DateUtil;
+import test.javafx.people.MainApp;
+import test.javafx.people.model.Person;
+import test.javafx.people.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
