@@ -10,12 +10,12 @@ import java.time.LocalDate;
 
 //세부 정보 모델 클래스
 public class Person {
-    private final StringProperty gender;
-    private final StringProperty name;
-    private final IntegerProperty age;
-    private final StringProperty area;
-    private final StringProperty phone;
-    private final ObjectProperty<LocalDate> birth;
+    private StringProperty gender;
+    private StringProperty name;
+    private IntegerProperty age;
+    private StringProperty area;
+    private StringProperty phone;
+    private ObjectProperty<LocalDate> birth;
 
     //디폴트 생성자
     public Person(){
@@ -27,11 +27,11 @@ public class Person {
         this.gender = new SimpleStringProperty(gender);
         this.name = new SimpleStringProperty(name);
         //테스트를 위해 초기화하는 더미 데이터
-        this.age = new SimpleIntegerProperty(0);
+        this.age = new SimpleIntegerProperty(1);
         this.area = new SimpleStringProperty("서울");
         this.phone = new SimpleStringProperty("010-1234-5678");
         //Date and Time API for JDK 8
-        this.birth = new SimpleObjectProperty<>(LocalDate.of(0, 0, 0));
+        this.birth = new SimpleObjectProperty<>(LocalDate.of(1234, 1, 1));
     }
 
     public void setGender(String gender) {

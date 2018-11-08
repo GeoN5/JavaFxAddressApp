@@ -107,7 +107,7 @@ public class PersonOverviewController {
             }
         }else{
             //아무것도 선택하지 않았다.
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainApp.getPrimaryStage());
             alert.setTitle("No Selection");
             alert.setHeaderText("No Person Selected");
@@ -125,7 +125,7 @@ public class PersonOverviewController {
             personTable.getItems().remove(selectedIndex);
         }else{
             //아무것도 선택하지 않았다.
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainApp.getPrimaryStage());
             alert.setTitle("No Selection");
             alert.setHeaderText("No Person Selected");
