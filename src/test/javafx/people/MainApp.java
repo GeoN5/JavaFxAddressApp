@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import test.javafx.people.model.Person;
 import test.javafx.people.view.PersonEditDialogController;
+import test.javafx.people.view.PersonNewDialogController;
 import test.javafx.people.view.PersonOverviewController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -24,8 +25,8 @@ public class MainApp extends Application {
 
     public MainApp(){
         //샘플 데이터를 추가한다.
-        personData.add(new Person("남자","철수"));
-        personData.add(new Person("여자", "영희"));
+//        personData.add(new Person("남자","철수"));
+//        personData.add(new Person("여자", "영희"));
     }
 
     //연락처에 대한 observable 리스트 반환한다.
@@ -103,6 +104,38 @@ public class MainApp extends Application {
 
             //person을 컨트롤러에 설정한다.
             PersonEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setPerson(person);
+
+            //다이얼로그를 보여주고 사용자가 닫을 때까지 기다린다.
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        }catch (IOException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //사람 추가를 위해 다이얼로그를 연다.
+    //만일 사용자가 OK를 클릭하면 주어진 person 객체에 내용을 저장한 후 true를 반환한다.
+    public boolean showPersonNewDialog(Person person){
+        try{
+            //fxml 파일을 로드하고 나서 새로운 스테이지를 만든다.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/PersonNewDialog.fxml"));
+            AnchorPane page = loader.load();
+
+            //다이얼로그 스테이지를 만든다.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("사용자 추가");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            //person을 컨트롤러에 설정한다.
+            PersonNewDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
 

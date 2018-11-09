@@ -42,8 +42,8 @@
         </GridPane>
         <ButtonBar layoutX="176.0" layoutY="233.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
-                <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+                <Button mnemonicParsing="false" onAction="#handleOk" text="확인" />
+                <Button mnemonicParsing="false" onAction="#handleCancel" text="취소" />
             </buttons>
         </ButtonBar>
     </children>

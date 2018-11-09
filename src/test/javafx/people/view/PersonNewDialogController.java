@@ -1,15 +1,13 @@
 package test.javafx.people.view;
 
-import test.javafx.people.model.Person;
-import test.javafx.people.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import test.javafx.people.model.Person;
+import test.javafx.people.util.DateUtil;
 
-
-//연락처 정보를 변경하는 다이얼로그
-public class PersonEditDialogController {
+public class PersonNewDialogController {
     @FXML
     private TextField genderField;
     @FXML
@@ -38,17 +36,16 @@ public class PersonEditDialogController {
         this.dialogStage = dialogStage;
     }
 
-    //다이얼로그에서 변경될 연락처를 설정한다.
+    //사람을 추가한다.
     public void setPerson(Person person){
         this.person = person;
 
-        genderField.setText(person.getGender());
-        nameField.setText(person.getName());
-        ageField.setText(Integer.toString(person.getAge()));
-        areaField.setText(person.getArea());
-        phoneField.setText(person.getPhone());
-        birthField.setText(DateUtil.format(person.getBirth()));
-        birthField.setPromptText("yyyy.mm.dd");
+        genderField.setPromptText("ex) 남자");
+        nameField.setPromptText("ex) 홍길동");
+        ageField.setPromptText("ex) 20");
+        areaField.setPromptText("ex) 서울");
+        phoneField.setPromptText("ex) 010-1234-5678");
+        birthField.setPromptText("ex) yyyy.mm.dd");
     }
 
     //사용자가 OK를 클릭하면 true,그 외에는 false

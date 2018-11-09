@@ -89,7 +89,7 @@ public class PersonOverviewController {
     @FXML
     private void handleNewPerson(){
         Person tempPerson = new Person();
-        boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
+        boolean okClicked = mainApp.showPersonNewDialog(tempPerson);
         if(okClicked){
             mainApp.getPersonData().add(tempPerson);
         }
