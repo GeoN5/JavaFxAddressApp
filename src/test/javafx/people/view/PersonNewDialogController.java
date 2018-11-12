@@ -3,6 +3,7 @@ package test.javafx.people.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import test.javafx.people.model.Person;
 import test.javafx.people.util.DateUtil;
@@ -34,6 +35,7 @@ public class PersonNewDialogController {
     //이 다이얼로그의 스테이지를 설정한다.
     public void setDialogStage(Stage dialogStage){
         this.dialogStage = dialogStage;
+        this.dialogStage.getIcons().add(new Image("file:src/images/dialog.png"));
     }
 
     //사람을 추가한다.

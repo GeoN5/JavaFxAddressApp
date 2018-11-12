@@ -2,6 +2,7 @@ package test.javafx.people;
 
 import java.io.IOException;
 
+import javafx.scene.image.Image;
 import test.javafx.people.model.Person;
 import test.javafx.people.view.PersonEditDialogController;
 import test.javafx.people.view.PersonNewDialogController;
@@ -37,7 +38,8 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Java 수행평가(사용자 관리)");
+        this.primaryStage.setTitle("Java 수행평가(사용자 개인정보 관리)");
+        this.primaryStage.getIcons().add(new Image("file:src/images/main.png"));
 
         initRootLayout();
         showPersonOverview();

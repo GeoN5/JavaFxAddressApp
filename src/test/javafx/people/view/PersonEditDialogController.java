@@ -1,5 +1,6 @@
 package test.javafx.people.view;
 
+import javafx.scene.image.Image;
 import test.javafx.people.model.Person;
 import test.javafx.people.util.DateUtil;
 import javafx.fxml.FXML;
@@ -36,6 +37,7 @@ public class PersonEditDialogController {
     //이 다이얼로그의 스테이지를 설정한다.
     public void setDialogStage(Stage dialogStage){
         this.dialogStage = dialogStage;
+        this.dialogStage.getIcons().add(new Image("file:src/images/dialog.png"));
     }
 
     //다이얼로그에서 변경될 연락처를 설정한다.
