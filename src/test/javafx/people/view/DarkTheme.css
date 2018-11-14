@@ -6,7 +6,7 @@
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
-    -fx-opacity: 0.6;
+    -fx-opacity: 0.8;
 }
 
 .label-bright {
@@ -70,7 +70,7 @@
 }
 
 .menu-bar {
-    -fx-background-color: derive(#1d1d1d,20%);
+    -fx-background-color: derive(#1d1d1d,15%);
 }
 
 .context-menu {
@@ -78,7 +78,7 @@
 }
 
 .menu-bar .label {
-    -fx-font-size: 14pt;
+    -fx-font-size: 15pt;
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
     -fx-opacity: 0.9;
