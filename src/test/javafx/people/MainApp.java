@@ -202,9 +202,9 @@ public class MainApp extends Application {
             setPersonFilePath(file);
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Could not save data");
-            alert.setContentText("Could not save data to file:\n" + file.getPath());
+            alert.setTitle("에러");
+            alert.setHeaderText("데이터 저장 실패.");
+            alert.setContentText("데이터를 파일에 저장할 수 없습니다.\n" + file.getPath());
             alert.showAndWait();
         }
     }
@@ -222,9 +222,9 @@ public class MainApp extends Application {
             setPersonFilePath(file);
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Could not save data");
-            alert.setContentText("Could not save data to file:\n" + file.getPath());
+            alert.setTitle("에러");
+            alert.setHeaderText("데이터 저장 실패.");
+            alert.setContentText("데이터를 파일에 저장할 수 없습니다.\n" + file.getPath());
             alert.showAndWait();
         }
     }

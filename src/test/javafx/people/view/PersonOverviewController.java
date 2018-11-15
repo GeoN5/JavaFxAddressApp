@@ -109,9 +109,9 @@ public class PersonOverviewController {
             //아무것도 선택하지 않았을때
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
+            alert.setTitle("선택되지 않음");
+            alert.setHeaderText("선택된 사람이 없습니다.");
+            alert.setContentText("사람을 선택해주세요.");
 
             alert.showAndWait();
         }
@@ -127,9 +127,9 @@ public class PersonOverviewController {
             //아무것도 선택하지 않았을때
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table");
+            alert.setTitle("선택되지 않음");
+            alert.setHeaderText("선택된 사람이 없습니다");
+            alert.setContentText("사람을 선택해주세요.");
             alert.showAndWait();
         }
     }

@@ -79,39 +79,39 @@ public class PersonNewDialogController {
         String errorMessage = "";
 
         if(genderField.getText() == null || genderField.getText().length() == 0){
-            errorMessage += "No valid gender!\n";
+            errorMessage += "성별을 입력해주세요!\n";
         }
         if(nameField.getText() == null || nameField.getText().length() == 0){
-            errorMessage += "No valid name!\n";
+            errorMessage += "이름을 입력해주세요!\n";
         }
         if(ageField.getText() == null || ageField.getText().length() == 0){
-            errorMessage += "No valid age!\n";
+            errorMessage += "나이를 입력해주세요!\n";
         }else{
             //숫자 타입인지 검사
             try{
                 Integer.parseInt(ageField.getText());
             }catch (NumberFormatException e){
-                errorMessage += "No valid age (must be an integer)!\n";
+                errorMessage += "나이는 정수여야 합니다!\n";
             }
         }
 
         if(areaField.getText() == null || areaField.getText().length() == 0){
-            errorMessage += "No valid area!\n";
+            errorMessage += "지역을 입력해주세요!\n";
         }
 
         if(phoneField.getText() == null || phoneField.getText().length() == 0){
-            errorMessage += "No valid phone!\n";
+            errorMessage += "전화번호를 입력해주세요!\n";
         }else{
             if(phoneField.getLength() != 13){
-                errorMessage += "No valid phone. Please use '-'!\n";
+                errorMessage += "010-1234-5678 형식이어야 합니다!\n";
             }
         }
 
         if(birthField.getText() == null || birthField.getText().length() == 0){
-            errorMessage += "No valid birth!\n";
+            errorMessage += "생년월일을 입력해주세요!\n";
         }else{
             if(!DateUtil.validDate(birthField.getText())){
-                errorMessage += "No valid birth. Use the format yyyy.mm.dd!\n";
+                errorMessage += "1234.01.01 형식이어야 합니다!\n";
             }
         }
 
@@ -120,8 +120,8 @@ public class PersonNewDialogController {
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(dialogStage);
-            alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
+            alert.setTitle("잘못된 입력");
+            alert.setHeaderText("올바르게 입력해주세요.");
             alert.setContentText(errorMessage);
             alert.showAndWait();
 
