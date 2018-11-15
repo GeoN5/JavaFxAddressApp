@@ -33,37 +33,37 @@ public class PersonOverviewController {
     //메인 에플리케이션 참조
     private MainApp mainApp;
 
-    //생성자 initialize()메소드 이전에 호출된다.
+    //생성자 initialize()메소드 이전에 호출
     public PersonOverviewController(){
 
     }
 
-    //컨트롤러 클래스를 초기화한다.
-    //fxml 파일이 로드되고 나서 자동으로 호출된다.
+    //컨트롤러 클래스 초기화
+    //fxml 파일이 로드되고 나서 자동으로 호출
     @FXML
     private void initialize(){
         //Person 객체의 어떤 필드를 각 열에 사용할지 결정
-        //연락처 테이블의 두 열을 초기화한다.
+        //테이블뷰의 두 열을 초기화
         genderColumn.setCellValueFactory(cellData -> cellData.getValue().genderProperty());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 
-        //연락처 정보를 지운다.
+        //세부 정보 삭제
         showPersonDetails(null);
 
-        //선택을 감지하고 그 때마다 연락처의 자세한 정보를 알려준다.
+        //선택을 감지하고 그 때마다 연락처의 세부 정보 로드
         personTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
-    //참조를 다시 유지하기 위해 메인 애플리케이션이 호출한다.
+    //참조를 다시 유지하기 위해 메인 애플리케이션이 호출
     public void setMainApp(MainApp mainApp){
         this.mainApp = mainApp;
-        //테이블에 observable 리스트 데이터를 추가한다.
+        //테이블에 observable 리스트 데이터 추가
         personTable.setItems(mainApp.getPersonData());
     }
 
-    //연락처의 자세한 정보를 보여주기 위해 모든 텍스트 필드를 채운다.
-    //만일 person객체가 null이면 모든 텍스트 필드가 지워진다.
+    //세부 정보를 보여주기 위해 모든 텍스트 필드를 채움
+    //만일 person객체가 null이면 모든 텍스트 필드 지움
     private void showPersonDetails(Person person){
         if(person!=null){
             //person 객체로 label에 정보를 채운다.
@@ -84,8 +84,8 @@ public class PersonOverviewController {
         }
     }
 
-    //사용자가 new 버튼을 클릭할 때 호출된다.
-    //새로운 연락처 정보를 넣기 위해 다이얼로그를 연다.
+    //사용자가 new 버튼을 클릭할 때 호출
+    //새로운 연락처 정보를 넣기 위해 다이얼로그를 띄움.
     @FXML
     private void handleNewPerson(){
         Person tempPerson = new Person();
@@ -96,7 +96,7 @@ public class PersonOverviewController {
     }
 
     //사용자가 edit 버튼을 클릭할 때 호출된다.
-    //선택한 연락처 정보를 변경하기 위해 다이얼로그를 연다.
+    //선택한 연락처 정보를 변경하기 위해 다이얼로그를 띄움.
     @FXML
     private void handleEditPerson(){
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
@@ -106,7 +106,7 @@ public class PersonOverviewController {
                 showPersonDetails(selectedPerson);
             }
         }else{
-            //아무것도 선택하지 않았다.
+            //아무것도 선택하지 않았을때
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainApp.getPrimaryStage());
             alert.setTitle("No Selection");
@@ -124,7 +124,7 @@ public class PersonOverviewController {
         if(selectedIndex>=0) {
             personTable.getItems().remove(selectedIndex);
         }else{
-            //아무것도 선택하지 않았다.
+            //아무것도 선택하지 않았을때
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainApp.getPrimaryStage());
             alert.setTitle("No Selection");

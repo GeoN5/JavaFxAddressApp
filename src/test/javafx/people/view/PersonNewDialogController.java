@@ -26,13 +26,10 @@ public class PersonNewDialogController {
     private Person person;
     private boolean okClicked = false;
 
-    //컨트롤러 클래스 초기화
-    //fxml 로드 후 자동 호출.
     @FXML
     private void initialize(){
     }
 
-    //이 다이얼로그의 스테이지를 설정한다.
     public void setDialogStage(Stage dialogStage){
         this.dialogStage = dialogStage;
         this.dialogStage.getIcons().add(new Image("file:src/images/dialog.png"));
@@ -77,7 +74,7 @@ public class PersonNewDialogController {
         dialogStage.close();
     }
 
-    //텍스트 필드로 사용자 입력을 검사한다.
+    //사용자 입력을 검사한다.
     private boolean isInputValid(){
         String errorMessage = "";
 
@@ -90,7 +87,7 @@ public class PersonNewDialogController {
         if(ageField.getText() == null || ageField.getText().length() == 0){
             errorMessage += "No valid age!\n";
         }else{
-            //나이를 int 타입으로 변환한다.
+            //숫자 타입인지 검사
             try{
                 Integer.parseInt(ageField.getText());
             }catch (NumberFormatException e){
@@ -121,7 +118,6 @@ public class PersonNewDialogController {
         if(errorMessage.length() == 0){
             return true;
         }else{
-            //오류 메세지를 보여준다.
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(dialogStage);
             alert.setTitle("Invalid Fields");

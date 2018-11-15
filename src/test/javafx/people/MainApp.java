@@ -8,9 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import test.javafx.people.model.Person;
 import test.javafx.people.model.PersonListWrapper;
-import test.javafx.people.view.PersonEditDialogController;
-import test.javafx.people.view.PersonNewDialogController;
-import test.javafx.people.view.PersonOverviewController;
+import test.javafx.people.view.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import test.javafx.people.view.RootLayoutController;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -30,7 +27,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    //연락처에 대한 observable 리스트
+    //유저 정보에 대한 observable 리스트
     private ObservableList<Person> personData = FXCollections.observableArrayList();
 
     public MainApp(){ }
@@ -50,19 +47,19 @@ public class MainApp extends Application {
         showPersonOverview();
     }
 
-    //상위 레이아웃을 초기화한다.
+    //상위 레이아웃 초기화
     private void initRootLayout() {
         try {
-            // fxml 파일에서 상위 레이아웃을 가져온다.
+            // fxml 파일에서 상위 레이아웃을 가져옴
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             rootLayout = loader.load();
 
-            // 상위 레이아웃을 포함하는 scene을 보여준다.
+            // 스테이지에 씬 설정
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
 
-            //컨트롤러한테 MainApp 접근 권한을 준다.
+            //컨트롤러한테 자기 자신 넘김
             RootLayoutController controller = loader.getController();
             controller.setMainApp(this);
 
@@ -71,7 +68,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
 
-        //마지막으로 열었던 연락처 파일을 가져온다.
+        //save 파일 로드
         File file = getPersonFilePath();
         if(file != null){
             loadPersonDataFromFile(file);
@@ -81,7 +78,7 @@ public class MainApp extends Application {
     //상위 레이아웃 안에 세부 정보를 보여준다.
     private void showPersonOverview() {
         try {
-            // 세부 정보를 가져온다.
+            // 세부 정보를 가져옴
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
             AnchorPane personOverview = loader.load();
@@ -89,7 +86,7 @@ public class MainApp extends Application {
             // rootLayout안에 setting
             rootLayout.setCenter(personOverview);
 
-            //메인 에플리케이션이 컨트롤러를 이용할 수 있게 한다.
+            //컨트롤러한테 자기 자신 넘김
             PersonOverviewController controller = loader.getController();
             controller.setMainApp(this);
 
@@ -98,16 +95,16 @@ public class MainApp extends Application {
         }
     }
 
-    //메인 스테이지를 반환한다.
+    //메인 스테이지 반환
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
-    //세부 정보를 변경하기 위해 다이얼로그를 연다.
-    //만일 사용자가 OK를 클릭하면 주어진 person 객체에 내용을 저장한 후 true를 반환한다.
+    //세부 정보 수정 다이얼로그 띄움
+    //사용자가 OK를 클릭하면 파라미터 person 객체에 저장 후 true 반환
     public boolean showPersonEditDialog(Person person){
         try{
-            //fxml 파일을 로드하고 나서 새로운 스테이지를 만든다.
+            //fxml 파일을 로드
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
             AnchorPane page = loader.load();
@@ -120,7 +117,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            //person을 컨트롤러에 설정한다.
+            //컨트롤러 설정
             PersonEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
@@ -135,11 +132,11 @@ public class MainApp extends Application {
         }
     }
 
-    //사람 추가를 위해 다이얼로그를 연다.
-    //만일 사용자가 OK를 클릭하면 주어진 person 객체에 내용을 저장한 후 true를 반환한다.
+    //유저 추가 다이얼로그 띄움
+    //사용자가 OK를 클릭하면 파라미터 person 객체에 내용 저장 후 true 반환
     public boolean showPersonNewDialog(Person person){
         try{
-            //fxml 파일을 로드하고 나서 새로운 스테이지를 만든다.
+            //fxml 파일을 로드
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PersonNewDialog.fxml"));
             AnchorPane page = loader.load();
@@ -152,7 +149,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            //person을 컨트롤러에 설정한다.
+            //컨트롤러 설정
             PersonNewDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
@@ -167,7 +164,7 @@ public class MainApp extends Application {
         }
     }
 
-    // 이 경로는 OS 특정 레지스트리에 저장된다.
+    //(key,value) OS 특정 레지스트리에 저장
     public void setPersonFilePath(File file){
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         if(file!=null){
@@ -179,7 +176,7 @@ public class MainApp extends Application {
         }
     }
 
-    //OS 특정 레지스트리로부터 읽는다. 만일 preference를 찾지 못하면 null을 반환한다.
+    //OS 특정 레지스트리로부터 읽고 파일을 찾지 못하면 null 반환
     public File getPersonFilePath(){
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         String filePath = prefs.get("filePath",null);
@@ -190,7 +187,7 @@ public class MainApp extends Application {
         }
     }
 
-    //현재 연락처 데이터를 지정한 파일에 저장한다.
+    //유저 정보를 지정한 파일에 저장
     public void savePersonDataToFile(File file){
         try{
             JAXBContext jaxbContext = JAXBContext.newInstance(PersonListWrapper.class);
@@ -199,7 +196,7 @@ public class MainApp extends Application {
             //연락처 데이터를 감싼다.
             PersonListWrapper wrapper = new PersonListWrapper();
             wrapper.setPersons(personData);
-            //마샬링 후 xml을 파일에 저장한다.
+            //마샬링 후 xml을 파일에 저장
             marshaller.marshal(wrapper,file);
             //파일 경로를 레지스트리에 저장한다.
             setPersonFilePath(file);
@@ -212,12 +209,12 @@ public class MainApp extends Application {
         }
     }
 
-    //지정한 파일로부터 연락처 데이터를 가져온다. 현재 연락처 데이터로 대체된다.
+    //파일로부터 유저 정보를 가져온다.
     public void loadPersonDataFromFile(File file){
         try{
             JAXBContext jaxbContext = JAXBContext.newInstance(PersonListWrapper.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            //파일로부터 xml을 읽은 다음 역마샬링한다.
+            //java객체 -> xml 역마샬링
             PersonListWrapper wrapper = (PersonListWrapper)unmarshaller.unmarshal(file);
             personData.clear();
             personData.addAll(wrapper.getPersons());
@@ -229,6 +226,52 @@ public class MainApp extends Application {
             alert.setHeaderText("Could not save data");
             alert.setContentText("Could not save data to file:\n" + file.getPath());
             alert.showAndWait();
+        }
+    }
+
+    //생일 차트 로드
+    public void showBirthdayChart(){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/BirthdayChart.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("생일 차트");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            dialogStage.getIcons().add(new Image("file:src/images/birthday.png"));
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            BirthdayChartController controller = loader.getController();
+            controller.setPersonData(personData);
+
+            dialogStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //성별 차트 로드
+    public void showGenderChart(){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/GenderChart.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("성별 차트");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            dialogStage.getIcons().add(new Image("file:src/images/gender.png"));
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            GenderChartController controller = loader.getController();
+            controller.setPersonData(personData);
+
+            dialogStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

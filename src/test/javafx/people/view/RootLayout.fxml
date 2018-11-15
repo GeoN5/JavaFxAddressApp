@@ -18,9 +18,10 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
+                <Menu mnemonicParsing="false" text="Chart">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowBirthdayChart" text="Birthday" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowGenderChart" text="gender" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" onAction="#handleAbout" text="Help">
