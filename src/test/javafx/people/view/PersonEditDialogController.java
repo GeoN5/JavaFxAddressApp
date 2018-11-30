@@ -8,7 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-//연락처 정보를 변경하는 다이얼로그
+
 public class PersonEditDialogController {
     @FXML
     private TextField genderField;
@@ -35,7 +35,7 @@ public class PersonEditDialogController {
         this.dialogStage.getIcons().add(new Image("file:src/images/dialog.png"));
     }
 
-    //다이얼로그에서 변경될 연락처를 설정한다.
+    //다이얼로그에서 변경될 연락처를 설정
     public void setPerson(Person person){
         this.person = person;
 
@@ -52,7 +52,7 @@ public class PersonEditDialogController {
         return okClicked;
     }
 
-    //사용자가 OK를 클릭하면 호출된다.
+    //사용자가 OK를 클릭하면 호출
     @FXML
     private void handleOk(){
         if(isInputValid()){
@@ -68,13 +68,13 @@ public class PersonEditDialogController {
         }
     }
 
-    //사용자가 cancel을 클릭하면 호출된다.
+    //사용자가 cancel을 클릭하면 호출
     @FXML
     private void handleCancel(){
         dialogStage.close();
     }
 
-    //사용자 입력을 검사한다.
+    //사용자 입력 검사
     private boolean isInputValid(){
         String errorMessage = "";
 

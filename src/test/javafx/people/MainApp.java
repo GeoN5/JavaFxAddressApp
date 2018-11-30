@@ -122,7 +122,6 @@ public class MainApp extends Application {
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
 
-            //다이얼로그를 보여주고 사용자가 닫을 때까지 기다린다.
             dialogStage.showAndWait();
 
             return controller.isOkClicked();
@@ -154,7 +153,6 @@ public class MainApp extends Application {
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
 
-            //다이얼로그를 보여주고 사용자가 닫을 때까지 기다린다.
             dialogStage.showAndWait();
 
             return controller.isOkClicked();

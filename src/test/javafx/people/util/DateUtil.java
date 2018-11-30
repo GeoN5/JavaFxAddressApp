@@ -6,10 +6,8 @@ import java.time.format.DateTimeFormatter;
 
 public class DateUtil {
 
-    //날짜 패턴,원하는 대로 바꿔도 O
     private static final String DATE_PATTERN = "yyyy.MM.dd";
 
-    //날짜 변환기
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
 
     //LocalDate -> String.

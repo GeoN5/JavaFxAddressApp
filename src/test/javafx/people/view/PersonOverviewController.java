@@ -33,7 +33,7 @@ public class PersonOverviewController {
     //메인 에플리케이션 참조
     private MainApp mainApp;
 
-    //생성자 initialize()메소드 이전에 호출
+    //initialize() 이전 호출
     public PersonOverviewController(){
 
     }
@@ -95,7 +95,7 @@ public class PersonOverviewController {
         }
     }
 
-    //사용자가 edit 버튼을 클릭할 때 호출된다.
+    //사용자가 edit 버튼을 클릭할 때 호출
     //선택한 연락처 정보를 변경하기 위해 다이얼로그를 띄움.
     @FXML
     private void handleEditPerson(){
@@ -117,7 +117,7 @@ public class PersonOverviewController {
         }
     }
 
-    //사용자가 삭제 버튼을 누르면 호출된다.
+    //사용자가 삭제 버튼을 누르면 호출
     @FXML
     private void handleDeletePerson(){
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();

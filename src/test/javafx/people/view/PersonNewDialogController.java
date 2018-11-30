@@ -35,7 +35,7 @@ public class PersonNewDialogController {
         this.dialogStage.getIcons().add(new Image("file:src/images/dialog.png"));
     }
 
-    //사람을 추가한다.
+    //사용자 추가
     public void setPerson(Person person){
         this.person = person;
 
@@ -52,7 +52,7 @@ public class PersonNewDialogController {
         return okClicked;
     }
 
-    //사용자가 OK를 클릭하면 호출된다.
+    //사용자가 OK를 클릭하면 호출
     @FXML
     private void handleOk(){
         if(isInputValid()){
@@ -68,13 +68,13 @@ public class PersonNewDialogController {
         }
     }
 
-    //사용자가 cancel을 클릭하면 호출된다.
+    //사용자가 cancel을 클릭하면 호출
     @FXML
     private void handleCancel(){
         dialogStage.close();
     }
 
-    //사용자 입력을 검사한다.
+    //사용자 입력을 검사
     private boolean isInputValid(){
         String errorMessage = "";
 
